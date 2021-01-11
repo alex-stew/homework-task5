@@ -74,3 +74,53 @@ function getCurrentDay() {
 // displays data for the function currentDay
 getCurrentDay();
 
+// this generates the day planners display
+today.forEach(function(thisHour) {
+    
+    // timeblock row
+    var hourRow = $("<form>").attr({
+        "class": "row time-block"
+    });
+    $(".container").append(hourRow);
+
+    console.log(today);
+
+    // hour cell
+    var hourTime = $("<div>")
+        .text(`${thisHour.hour}${thisHour.amPm}`)
+        .attr({
+            "class": "col-1 hour"
+    });
+
+    // input (task) field
+    var  hourTask = $("<div>")
+        .attr({
+            "class": "col -10 description"
+    });
+
+    var taskInput = $("<textarea>");
+    hourTask.append(taskInput);
+    taskInput.attr("id", thisHour.id);
+    if (thisHour.time < moment().format("HH")) {
+        taskInput.attr ({
+            "class": "past"
+        })
+    } else if (thisHour.time === moment().format("HH")) {
+        taskInput.attr({
+            "class": "present"
+        })
+    } else if (thisHour.time > moment().format("HH")) {
+        taskInput.attr({
+            "class": "future"
+        })
+    }
+
+    // save button
+    var saveIcon = $("<i class='fas fa-save fa-lg'></i>");
+    var saveTask = $("<button>")
+        .attr({
+            "class": "col-1 saveBtn"
+        });
+    saveTask.append(saveIcon);
+    hourRow.append(hourTime, hourTask, saveTask);
+})
