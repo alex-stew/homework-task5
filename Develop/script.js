@@ -78,12 +78,10 @@ getCurrentDay();
 today.forEach(function(thisHour) {
     
     // timeblock row
-    var hourRow = $("<form>").attr({
+    var hourRow = $("<div>")
+        .attr({
         "class": "row"
     });
-    $(".container").append(hourRow);
-
-    console.log(today);
 
     // hour cell
     var hourTime = $("<div>")
@@ -93,25 +91,20 @@ today.forEach(function(thisHour) {
     });
 
     // input (task) field
-    var  hourTask = $("<div>")
-        .attr({
-            "class": "col-10 description"
-        });
-
     var taskInput = $("<textarea>");
-    hourTask.append(taskInput);
+  
     taskInput.attr("id", thisHour.id);
     if (thisHour.hour < moment().format("HH")) {
         taskInput.attr ({
-            "class": "past"
+            "class": "past col-10 description"
         })
     } else if (thisHour.hour === moment().format("HH")) {
         taskInput.attr({
-            "class": "present"
+            "class": "present col-10 description"
         })
     } else if (thisHour.hour > moment().format("HH")) {
         taskInput.attr({
-            "class": "future"
+            "class": "future col-10 description"
         })
     }
 
@@ -122,5 +115,7 @@ today.forEach(function(thisHour) {
             "class": "col-1 saveBtn"
         });
     saveTask.append(saveIcon);
-    hourRow.append(hourTime, hourTask, saveTask);
+    hourRow.append(hourTime, taskInput, saveTask);
+
+    $(".container").append(hourRow);
 })
