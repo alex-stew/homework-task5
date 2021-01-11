@@ -79,7 +79,7 @@ today.forEach(function(thisHour) {
     
     // timeblock row
     var hourRow = $("<form>").attr({
-        "class": "row time-block"
+        "class": "row"
     });
     $(".container").append(hourRow);
 
@@ -87,7 +87,7 @@ today.forEach(function(thisHour) {
 
     // hour cell
     var hourTime = $("<div>")
-        .text(`${thisHour.hour}${thisHour.amPm}`)
+        .text(`${thisHour.time}${thisHour.amPm}`)
         .attr({
             "class": "col-1 hour"
     });
@@ -95,21 +95,21 @@ today.forEach(function(thisHour) {
     // input (task) field
     var  hourTask = $("<div>")
         .attr({
-            "class": "col -10 description"
-    });
+            "class": "col-10 description"
+        });
 
     var taskInput = $("<textarea>");
     hourTask.append(taskInput);
     taskInput.attr("id", thisHour.id);
-    if (thisHour.time < moment().format("HH")) {
+    if (thisHour.hour < moment().format("HH")) {
         taskInput.attr ({
             "class": "past"
         })
-    } else if (thisHour.time === moment().format("HH")) {
+    } else if (thisHour.hour === moment().format("HH")) {
         taskInput.attr({
             "class": "present"
         })
-    } else if (thisHour.time > moment().format("HH")) {
+    } else if (thisHour.hour > moment().format("HH")) {
         taskInput.attr({
             "class": "future"
         })
