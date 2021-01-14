@@ -7,4 +7,5 @@
 
 
 <h3>Screenshot of deployed application in use: </h3>
-<img src = "(https://user-images.githubusercontent.com/69836062/104583941-b45b1400-56b1-11eb-88d7-51d39f66c9af.png)">
+![Screen Shot 2021-01-14 at 12 49 26 pm](https://user-images.githubusercontent.com/69836062/104583941-b45b1400-56b1-11eb-88d7-51d39f66c9af.png)
+
